@@ -5,15 +5,8 @@ env:
   docker_password: ${{ secrets.GITHUB_TOKEN}}
   GIT_COMMIT: ${{ github.sha }}
 jobs:
-  Say-Hello:
-    name: "Hey, lets start the pipeline"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Hello
-        run: echo "Hey, lets start the pipeline"
   Clone-Down:
     name: Clone Down
-    needs: Say-Hello
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
@@ -59,11 +52,3 @@ jobs:
         run: chmod +x ci/build-docker.sh && ci/build-docker.sh
       - name: Push Docker
         run: chmod +x ci/push-docker.sh && ci/push-docker.sh
-  Say-Goodbye:
-    name: "Hey, lets end the pipeline"
-    needs: Docker-Image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Say Goodbye
-        run: echo "Hey, lets end the pipeline"
-   
