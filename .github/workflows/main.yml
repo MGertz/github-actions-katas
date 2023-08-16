@@ -5,12 +5,16 @@ env:
   docker_password: ${{ secrets.GITHUB_TOKEN}}
   GIT_COMMIT: ${{ github.sha }}
 jobs:
+  Clone-Down:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Down
+        uses: actions/checkout@v3
   Build:
     runs-on: ubuntu-latest
+    needs: Clone-Down
     container: gradle:6-jdk11
     steps:
-      - name: Clone-down
-        uses: actions/checkout@v3
       - name: Build Application
         run: chmod +x ci/build-app.sh && ci/build-app.sh
       - name: Test Application
