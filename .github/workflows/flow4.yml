@@ -1,4 +1,4 @@
-name: Extending the pipeline
+name: 4 - Extending the pipeline
 on: push
 jobs:
   Build:
