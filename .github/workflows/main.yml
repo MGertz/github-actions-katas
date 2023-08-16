@@ -13,6 +13,7 @@ jobs:
         run: echo "Hey, lets start the pipeline"
   Clone-Down:
     name: Clone Down
+    needs: Say-Hello
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
@@ -60,6 +61,7 @@ jobs:
         run: chmod +x ci/push-docker.sh && ci/push-docker.sh
   Say-Goodbye:
     name: "Hey, lets end the pipeline"
+    needs: Docker-Image
     runs-on: ubuntu-latest
     steps:
       - name: Say Goodbye
