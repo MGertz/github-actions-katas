@@ -1,0 +1,14 @@
+name: Build
+on: push
+jobs:
+    build:
+        runs-on: gradle:6-jdk11
+        steps:
+            - name: Clone-down
+              uses: actions/checkout@v3 
+        
+            - name: set permissions
+              run: chmod +x ci/build-app.sh
+
+            - name: Run Script
+              run: ci/build-app.sh
