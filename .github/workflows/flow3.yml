@@ -1,4 +1,4 @@
-name: Workflow with containers
+name: 3 - Workflow with containers
 on: push
 jobs:
   Build:
